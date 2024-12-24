@@ -4,15 +4,20 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios, { Axios } from 'axios'
 
+const apikey = import.meta.env.VITE_API_KEY;
+
+console.log(apikey);
+
 function App() {
   const [question, setquestion] = useState("");
   const [answer, setAnswer] = useState()
 
   async function generateAnswer() {
+    // const apikey = process.env.API_KEY
     setAnswer("Loading.....");
     try {
       const response = await axios({
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCqpBZILfy5CN2UuXumOMHKxHNWSpeCNPA",
+        url: apikey,
         method: "post",
         data: {
           contents: [
